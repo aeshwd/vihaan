@@ -398,7 +398,7 @@
   const cert = document.getElementById("certificate");
   const audio = document.getElementById("bg-music");
 
-  const targetDate = new Date("2025-10-16T00:00:00").getTime();
+  const targetDate = new Date("2025-10-15T00:00:00").getTime();
 
   const interval = setInterval(() => {
   const now = new Date().getTime();
@@ -421,13 +421,14 @@
   function revealSurprise() {
     const now = new Date().getTime();
     if (now < targetDate) {
-      alert("🎁 Please wait till 16th October, 12:00 AM!");
-      return;
+  alert("🎁 Please wait till 16th October, 12:00 AM!");
+  return;
+
     }
     alert("🎉 Surprise is unlocking now!");
     audio.play();
 
-    typeText("Dear Punitha,\n\Wishing a very happy birthday to one of the most wonderful souls I’ve ever met! From the very first day in Russia, you’ve filled every moment with laughter, kindness, and a warmth that makes even the coldest days feel brighter. You’re not just my classmate or study partner — you’re a true friend, someone who inspires with your hard work, your positivity, and your beautiful heart.\n\n\nWith love,\n Aesh Goswami", message, () => {
+    typeText("Dear Punitha,\n Wishing a very happy birthday to one of the most wonderful souls I’ve ever met! From the very first day in Russia, you’ve filled every moment with laughter, kindness, and a warmth that makes even the coldest days feel brighter. You’re not just my classmate or study partner — you’re a true friend, someone who inspires with your hard work, your positivity, and your beautiful heart.\n\n\nWith love,\n Aesh Goswami", message, () => {
       gallery.style.display = 'flex';
       typeText("🏸 A Poem for Punitha 🏸\n\nIn a land of snow and silver ,\nskies, so far yet close to heart,.\nLives a soul named Punithavati ,\nBetween the books and busy days, your laughter lights the air,!\n A friend so pure, so full of grace, beyond compare.\n So here’s to you, on your special day,\May joy and peace forever stay.
 The world’s a better place, you see —\n Because it holds someone like thee, dear Punithavati. 💖
