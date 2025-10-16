@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🎁 Vihaan's Birthday Surprise</title>
+  <title>🎁 Punitha's Birthday Surprise</title>
   <style>
     body {
       margin: 0;
@@ -324,7 +324,7 @@
 
 
 <div class="container">
-  <h1>🎉 Surprise for Vihaan 🎉</h1>
+  <h1>🎉 Surprise for Punitha 🎉</h1>
   <p>Note: The mystery box will unlock exactly on <strong>24th July at 12:00 AM</strong></p>
 
   <div id="countdown"></div>
@@ -351,21 +351,20 @@
   <button class="btn entry-btn" onclick="document.querySelector('.quiz-container').style.display='block'">🧠 Enter Mini Quiz</button>
 
   <div class="quiz-container" id="quiz">
-  <h2>🎯 Vihaan's Birthday Quiz</h2>
+  <h2>🎯 Punitha Birthday Quiz</h2>
 
   <div class="question-box">
-    <h3>🏸 Badminton Rules & Regulations</h3>
-    <p>3. How many points are required to win a badminton game?<br>
+    <h3>Some funny questions. Its important to pass this quiz</h3>
+    <p>1. What is my name ?<br>
     <input type="text" name="q1" placeholder="Your answer here..."></p>
 
-    <p>4. If the score is 20–20, what must a player do to win like how much score?<br>
+    <p>2. How old am i ? <br>
     <input type="text" name="q2" placeholder="Your answer here..."></p>
 
-    <p>5. Can a player touch the net with their racquet during play?<br>
+    <p>3. What is the relationship with you and me? <br>
     <input type="text" name="q3" placeholder="Your answer here..."></p>
 
-    <p>6. If a shuttle lands on the line, is it in or out?<br>
-    <input type="text" name="q4" placeholder="Your answer here..."></p>
+    
 
     
 
@@ -374,8 +373,8 @@
 
   <div class="certificate" id="certificate">
     🏅 <b>Certificate of Surprise</b><br><br>
-    This is to certify that Vihaan has completed the Birthday Quiz with full energy and fun! <br>
-    Presented by: Aesh Goswami (Cousin Brother & Junior Coach)
+    This is to certify that Punith has completed the Birthday Quiz with full energy and fun! <br>
+    Presented by: Aesh Goswami (Friend)
   </div>
 
   <a class="whatsapp-thank" href="https://wa.me/917626915690" target="_blank">💚 Say Thanks to Aesh on WhatsApp</a>
@@ -384,7 +383,7 @@
 <div id="shuttle-fall"></div>
 <footer class="footer">
   <div class="footer-content">
-    <p>Made with ❤️ by Aesh Goswami for Vihaan Jindal</p>
+    <p>Made with ❤️ by Aesh Goswami for Punithavati</p>
     <p>&copy; 2025 Surprise Project | All Rights Reserved</p>
   </div>
 </footer>
@@ -399,7 +398,7 @@
   const cert = document.getElementById("certificate");
   const audio = document.getElementById("bg-music");
 
-  const targetDate = new Date("2025-07-21T00:00:00").getTime();
+  const targetDate = new Date("2025-10-16T00:00:00").getTime();
 
   const interval = setInterval(() => {
     const now = new Date().getTime();
@@ -419,15 +418,17 @@
   function revealSurprise() {
     const now = new Date().getTime();
     if (now < targetDate) {
-      alert("🎁 Please wait till 24th July, 12:00 AM!");
+      alert("🎁 Please wait till 16th October, 12:00 AM!");
       return;
     }
     alert("🎉 Surprise is unlocking now!");
     audio.play();
 
-    typeText("Dear Vihaan,\n\nAs your cousin brother and junior coach, I wish you a smashing year ahead full of medals and smiles! You're truly special and this day is just for YOU.\n\nWith love,\n Aesh Goswami", message, () => {
+    typeText("Dear Punitha,\n\Wishing a very happy birthday to one of the most wonderful souls I’ve ever met! From the very first day in Russia, you’ve filled every moment with laughter, kindness, and a warmth that makes even the coldest days feel brighter. You’re not just my classmate or study partner — you’re a true friend, someone who inspires with your hard work, your positivity, and your beautiful heart.\n\n\nWith love,\n Aesh Goswami", message, () => {
       gallery.style.display = 'flex';
-      typeText("🏸 A Poem for Vihaan 🏸\n\nWith a racket in hand, he fights like a knight,\nHis smile and smash both a glorious sight.\nFrom early morning practice to evening cheer,\nVihaan, you make badminton year by year!\n\nKeep shining, my younger brother dear,\nHappy Birthday and Victory is Near!", poem, () => {
+      typeText("🏸 A Poem for Punitha 🏸\n\nIn a land of snow and silver ,\nskies, so far yet close to heart,.\nLives a soul named Punithavati ,\nBetween the books and busy days, your laughter lights the air,!\n A friend so pure, so full of grace, beyond compare.\n So here’s to you, on your special day,\May joy and peace forever stay.
+The world’s a better place, you see —\n Because it holds someone like thee, dear Punithavati. 💖
+!", poem, () => {
         dropShuttles();
       });
     });
@@ -474,10 +475,9 @@
   function checkQuiz() {
     let score = 0;
     const answers = {
-      q1: "21",
-      q2: "22",
-      q3: "no",
-      q4: "in"
+      q1: "Aesh",
+      q2: "21",
+      q3: "friend",
     };
 
     const userQ1 = document.querySelector('input[name="q1"]').value.trim().toLowerCase();
