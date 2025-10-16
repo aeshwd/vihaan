@@ -398,49 +398,55 @@
   const cert = document.getElementById("certificate");
   const audio = document.getElementById("bg-music");
 
-  const targetDate = new Date("2025-10-15T00:00:00").getTime();
+  // 👇 For testing, make the box openable instantly
+  const targetDate = new Date().getTime() - 5000; // already passed
 
   const interval = setInterval(() => {
-  const now = new Date().getTime();
-  const gap = targetDate - now;
+    const now = new Date().getTime();
+    const gap = targetDate - now;
 
-  if (gap <= 0) {
-    countdown.innerHTML = "🎁 The box is now clickable!";
-    box.style.pointerEvents = "auto";  // make it clickable
-    box.style.opacity = "1";           // make it look active
-    clearInterval(interval);
-  } else {
-    const d = Math.floor(gap / (1000 * 60 * 60 * 24));
-    const h = Math.floor((gap / (1000 * 60 * 60)) % 24);
-    const m = Math.floor((gap / (1000 * 60)) % 60);
-    const s = Math.floor((gap / 1000) % 60);
-    countdown.innerHTML = `⏳ ${d}d ${h}h ${m}m ${s}s`;
-  }
-}, 1000);
+    if (gap <= 0) {
+      countdown.innerHTML = "🎁 The box is now clickable!";
+      box.style.pointerEvents = "auto";
+      box.style.opacity = "1";
+      clearInterval(interval);
+    } else {
+      const d = Math.floor(gap / (1000 * 60 * 60 * 24));
+      const h = Math.floor((gap / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((gap / (1000 * 60)) % 60);
+      const s = Math.floor((gap / 1000) % 60);
+      countdown.innerHTML = `⏳ ${d}d ${h}h ${m}m ${s}s`;
+    }
+  }, 1000);
 
   function revealSurprise() {
     const now = new Date().getTime();
     if (now < targetDate) {
-  alert("🎁 Please wait till 16th October, 12:00 AM!");
-  return;
-
+      alert("🎁 Please wait till the surprise unlocks!");
+      return;
     }
+
     alert("🎉 Surprise is unlocking now!");
     audio.play();
 
-    typeText("Dear Punitha,\n Wishing a very happy birthday to one of the most wonderful souls I’ve ever met! From the very first day in Russia, you’ve filled every moment with laughter, kindness, and a warmth that makes even the coldest days feel brighter. You’re not just my classmate or study partner — you’re a true friend, someone who inspires with your hard work, your positivity, and your beautiful heart.\n\n\nWith love,\n Aesh Goswami", message, () => {
-      gallery.style.display = 'flex';
-      typeText("🏸 A Poem for Punitha 🏸\n\nIn a land of snow and silver ,\nskies, so far yet close to heart,.\nLives a soul named Punithavati ,\nBetween the books and busy days, your laughter lights the air,!\n A friend so pure, so full of grace, beyond compare.\n So here’s to you, on your special day,\May joy and peace forever stay.
-The world’s a better place, you see —\n Because it holds someone like thee, dear Punithavati. 💖
-!", poem, () => {
-        dropShuttles();
-      });
-    });
+    typeText(
+      "Dear Punitha,\nWishing a very happy birthday to one of the most wonderful souls I’ve ever met! From the very first day in Russia, you’ve filled every moment with laughter, kindness, and warmth that makes even the coldest days feel brighter. You’re not just my classmate or study partner — you’re a true friend, someone who inspires with your hard work, positivity, and beautiful heart.\n\nWith love,\nAesh Goswami ❤️",
+      message,
+      () => {
+        gallery.style.display = "flex";
+        typeText(
+          "🏸 A Poem for Punitha 🏸\n\nIn a land of snow and silver skies,\nLives a soul with a heart so wise.\nBetween the books and busy days,\nYour laughter lights up all our ways.\n\nA friend so pure, so full of grace,\nBringing smiles to every place.\nSo here’s to you on this special day —\nMay joy and love forever stay.\n\nThe world’s more bright, the stars more free,\nBecause it holds someone like thee, dear Punithavati 💖",
+          poem,
+          dropShuttles
+        );
+      }
+    );
   }
 
   function typeText(text, element, callback) {
     let i = 0;
-    element.style.display = 'block';
+    element.style.display = "block";
+    element.innerHTML = ""; // clear before typing
     const typing = setInterval(() => {
       if (i < text.length) {
         element.innerHTML += text[i];
@@ -449,7 +455,7 @@ The world’s a better place, you see —\n Because it holds someone like thee, 
         clearInterval(typing);
         if (callback) callback();
       }
-    }, 40);
+    }, 35);
   }
 
   function dropShuttles() {
@@ -466,20 +472,8 @@ The world’s a better place, you see —\n Because it holds someone like thee, 
 
   function checkQuiz() {
     let score = 0;
-    if (document.querySelector('input[name="q1"]:checked')?.value === "b") score++;
-    if (document.querySelector('input[name="q2"]:checked')?.value === "b") score++;
-    alert("🎯 You scored " + score + "/2");
-    if (score === 2) {
-      cert.style.display = 'block';
-    }
-  }
-</script>
-
-<script>
-  function checkQuiz() {
-    let score = 0;
     const answers = {
-      q1: "Aesh",
+      q1: "aesh",
       q2: "21",
       q3: "friend",
     };
@@ -487,30 +481,27 @@ The world’s a better place, you see —\n Because it holds someone like thee, 
     const userQ1 = document.querySelector('input[name="q1"]').value.trim().toLowerCase();
     const userQ2 = document.querySelector('input[name="q2"]').value.trim().toLowerCase();
     const userQ3 = document.querySelector('input[name="q3"]').value.trim().toLowerCase();
-    const userQ4 = document.querySelector('input[name="q4"]').value.trim().toLowerCase();
 
     if (userQ1 === answers.q1) score++;
-    if (userQ2.includes("2")) score++; // Accept "22" or "2 point lead"
-    if (userQ3 === answers.q3) score++;
-    if (userQ4 === answers.q4) score++;
+    if (userQ2.includes("21")) score++;
+    if (userQ3.includes(answers.q3)) score++;
 
-    alert(`🎯 You scored ${score}/4`);
-    if (score === 4) {
-      document.getElementById("certificate").style.display = "block";
+    alert(`🎯 You scored ${score}/3`);
+    if (score >= 2) {
+      cert.style.display = "block";
     }
   }
 
-
   function playMusic() {
-  const audio = document.getElementById("bg-music");
-  audio.play().then(() => {
-    document.getElementById("music-popup").style.display = "none";
-  }).catch((e) => {
-    alert("Unable to play music. Please try again.");
-  });
-}
+    audio.play()
+      .then(() => {
+        document.getElementById("music-popup").style.display = "none";
+      })
+      .catch(() => {
+        alert("Please tap again to enable sound!");
+      });
+  }
 </script>
-
 
 
 </body>
